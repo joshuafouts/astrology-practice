@@ -176,12 +176,21 @@
     box-sizing: border-box !important;
   }
 
-  /* FORCES BIO TEXT TO VISIBILITY: Illuminates the hidden paragraphs next to your photo */
-  .py-32:has(img[src*="joshportrait"]) .space-y-5 p,
-  .py-32:has(img[src*="joshportrait"]) [class*="text-parchment-dark"] {
-    color: #e2e8f0 !important;
+  /* GLOBAL BIO ILLUMINATION: Overrides all fractional opacities to force text visible */
+  .py-32:has(img[src*="joshportrait"]) p,
+  .py-32:has(img[src*="joshportrait"]) span,
+  .py-32:has(img[src*="joshportrait"]) div {
+    color: #fcfbfa !important; /* Premium crisp off-white */
     font-size: 1.05rem !important;
     line-height: 1.75 !important;
+  }
+  
+  /* Retains your beautiful quote signature gold styling */
+  .py-32:has(img[src*="joshportrait"]) p.text-gold\/80,
+  .py-32:has(img[src*="joshportrait"]) .italic {
+    color: #e5c158 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
   }
 
   /* 5. Taming Graphics and Horizontal Accent Dividers */
@@ -204,7 +213,7 @@
     display: block !important;
   }
 
-  /* 6. Contact Section & Interactive Inputs Alignment */
+ /* 6. Contact Section & Interactive Inputs Alignment */
   form {
     max-width: 600px !important;
     margin: 40px auto 0 auto !important;
@@ -214,10 +223,11 @@
     gap: 24px !important;
   }
 
-  /* FORCES CONTACT TEXT TO VISIBILITY: Illuminates form descriptions and labels */
+  /* GLOBAL CONTACT ILLUMINATION: Overrides hidden fields and headers */
   .py-32:has(form) h2,
   .py-32:has(form) p,
-  .py-32:has(form) label {
+  .py-32:has(form) label,
+  .py-32:has(form) div {
     color: #fcfbfa !important;
   }
   
@@ -241,7 +251,7 @@
   input, textarea {
     background: transparent !important;
     border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important; /* Slightly brighter line */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important; /* Solid contrast accent border */
     color: #fcfbfa !important;
     padding: 12px 0 !important;
     width: 100% !important;
