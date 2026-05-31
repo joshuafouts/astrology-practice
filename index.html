@@ -16,26 +16,28 @@
     <link rel="modulepreload" crossorigin="" href="/assets/router-vendor-gEA3V6qE.js">
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <style>
-  /* 1. This handles the parchment background texture layer */
+<style>
+  /* 1. This stretches the parchment texture across the absolute entirety of the screen */
   html {
     background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important;
     background-size: cover !important;
-    background-position: center !important;
+    background-position: center top !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
     background-color: #1a1a1a !important;
+    min-height: 100%;
   }
 
-  /* 2. This locks the golden zodiac wheel directly behind the text, perfectly centered */
+  /* 2. This locks the background elements completely in place so they never loop or tile */
   body {
-    background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png"), url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important; /* Fallback */
     margin: 0;
     padding: 60px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-h-screen: 100vh;
+    min-height: 100vh;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
   }
 
   /* 3. This tames the floating image blocks so they stop acting as standalone blocks */
