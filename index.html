@@ -17,7 +17,7 @@
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <style>
-  /* 1. This stretches the parchment texture across the absolute entirety of the screen */
+  /* 1. Sets the global parchment backdrop */
   html {
     background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important;
     background-size: cover !important;
@@ -28,7 +28,7 @@
     min-height: 100%;
   }
 
-  /* 2. This locks the background elements completely in place so they never loop or tile */
+  /* 2. Resets the body layout */
   body {
     margin: 0;
     padding: 60px 20px;
@@ -36,47 +36,55 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
   }
 
-  /* 3. This tames the floating image blocks so they stop acting as standalone blocks */
+  /* 3. The ONLY dark container card allowed on the page */
+  div[id="root"] {
+    max-width: 750px;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.92) !important; /* Rich dark container */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+  }
+
+  /* 4. STRIPS the extra dark backgrounds from the nesting layers */
+  .min-h-screen, [class*="min-h-screen"], section, div {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* 5. Keeps floating asset blocks out of the text lane */
   div[style*="background-image"], .absolute, [class*="absolute"] {
     position: static !important;
-    background-image: none !important; /* Strips them out of the text flow */
+    background-image: none !important;
     transform: none !important;
     width: auto !important;
     height: auto !important;
   }
 
-  /* 4. This centers and frames your text content perfectly */
-  div[id="root"], .min-h-screen {
-    max-width: 750px;
-    width: 100%;
-    background: rgba(26, 26, 26, 0.85) !important; /* Subtle dark backing so text remains ultra-readable over the art */
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  }
-
-  /* 5. Typography stabilization */
-  h1, h2, h3, p, div, span, label {
-    color: #f5f5dc !important; /* Hard-forces parchment cream */
+  /* 6. Typography perfection */
+  h1, h2, h3, p, div, span, label, a {
+    color: #f5f5dc !important; /* Parchment cream text */
     position: static !important;
+    font-family: 'Georgia', serif !important;
   }
 
   h1 {
-    font-size: 2.5rem !important;
+    font-size: 2.4rem !important;
     line-height: 1.3 !important;
     margin-bottom: 24px !important;
   }
 
-  /* 6. Section dividing lines */
+  /* 7. Understated gold lines between sections */
   section {
     width: 100%;
     margin: 40px 0 !important;
     padding-bottom: 30px;
-    border-bottom: 1px solid #d4af37 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4) !important; /* Subtle gold divider */
   }
 </style></head>
 
