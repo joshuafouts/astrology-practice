@@ -17,7 +17,7 @@
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <style>
-  /* 1. Global Canvas & Page Containers */
+  /* 1. Global Page Canvas & Main Atoms Panel */
   html, body {
     background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important;
     background-size: cover !important;
@@ -31,7 +31,7 @@
     min-height: 100vh;
   }
 
-  /* Atoms Main Dark Column Containment */
+  /* Centered Main Column Panel Container */
   div[id="root"] {
     max-width: 960px !important;
     width: 92% !important;
@@ -43,38 +43,123 @@
     box-sizing: border-box;
     position: relative !important;
     z-index: 10 !important;
-    overflow: hidden !important;
   }
 
-  /* 2. Fixes for Oversized Graphics (Astrological Wheel & Line Dividers) */
-  /* This targets and tames the massive background wheel in the header */
-  div[id="root"] > div:first-child img,
-  img[src*="astrology-wheel"], 
-  img[src*="zodiac"] {
-    max-width: 220px !important;
+  /* 2. Top Header & Typography Consistency Fixes */
+  /* Standardizes header sizing cleanly from the top down */
+  h1, [class*="text-4xl"], [class*="text-5xl"] {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 2.8rem !important;
+    color: #fcfbfa !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 16px !important;
+  }
+
+  h2, [class*="text-3xl"], [class*="text-2xl"] {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 2.1rem !important;
+    color: #fcfbfa !important;
+    font-weight: 400 !important;
+    margin-bottom: 14px !important;
+  }
+
+  h3, [class*="text-xl"] {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.4rem !important;
+    color: #fcfbfa !important;
+    font-weight: 400 !important;
+  }
+
+  /* Subtitles / Small Labels (like "Joshua Fouts", "Get In Touch", "Offerings") */
+  [class*="text-xs"], [class*="text-sm"], [class*="tracking-wider"] {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: #e5c158 !important; /* Forces consistent gold tone for accents */
+  }
+
+  /* Clean up Body Text */
+  p, span, li, [class*="text-zinc-"], [class*="text-neutral-"], [class*="text-slate-"] {
+    color: #e2e8f0 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.75 !important;
+  }
+
+  p { margin-top: 0 !important; margin-bottom: 18px !important; }
+
+  /* Gold Highlight/Emphasis Phrases */
+  em, strong, [class*="text-gold"], [class*="text-amber-"] {
+    color: #e5c158 !important;
+    font-style: italic !important;
+    font-family: 'Cormorant Garamond', serif !important;
+  }
+
+  /* 3. Taming Graphics and Icons */
+  img[src*="astrology-wheel"], img[src*="zodiac"] {
+    max-width: 180px !important;
     height: auto !important;
-    margin: 0 auto 30px auto !important;
+    margin: 20px auto 30px auto !important;
     display: block !important;
-    opacity: 0.7 !important;
-    position: relative !important;
+    opacity: 0.65 !important;
   }
 
-  /* This shrinks the geometric alignment horizontal line symbol */
-  svg, 
-  div:has(> svg), 
-  [class*="absolute"] img[src*="vector"],
-  img[src*="divider"] {
-    max-width: 160px !important;
+  svg, div:has(> svg), img[src*="divider"] {
+    max-width: 140px !important;
     height: auto !important;
-    margin: 40px auto !important;
+    margin: 30px auto !important;
     display: block !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
   }
 
-  /* 3. Distinct Services Blocks Grid */
+  /* 4. Contact Section Layout & Alignment Fixes */
+  /* Centers and bounds the contact fields to keep them from stretching awkwardly */
+  form, div:has(> form) {
+    max-width: 600px !important;
+    margin: 40px auto 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  /* Strips the ugly blue default browser link box showing in the screenshot */
+  a[href^="mailto:"] {
+    color: #e5c158 !important;
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.3rem !important;
+    font-style: italic !important;
+    display: block !important;
+    margin: 15px auto !important;
+    text-align: center !important;
+  }
+  
+  a[href^="mailto:"]:focus, a[href^="mailto:"]:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Form Fields styling for clean, consistent underlines */
+  input, textarea {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fcfbfa !important;
+    padding: 10px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+  }
+
+  input:focus, textarea:focus {
+    outline: none !important;
+    border-bottom: 1px solid #e5c158 !important;
+  }
+
+  /* 5. Services Grid Blocks */
   .grid, [class*="grid-cols-"] {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
@@ -90,21 +175,15 @@
     border-radius: 4px !important;
   }
 
-  /* 4. Separating the Portrait from the About Text (No Overlap) */
-  /* This targets the container holding your photo and bio to force them side-by-side cleanly */
-  section:has(img[src*="portrait"]), 
-  div:has(> img[src*="portrait"]),
-  [class*="md:flex-row"] {
+  /* 6. Biography Layout Structure */
+  section:has(img[src*="portrait"]), div:has(> img[src*="portrait"]) {
     display: flex !important;
     flex-direction: row !important;
     gap: 48px !important;
     align-items: flex-start !important;
-    position: relative !important;
     margin-top: 40px !important;
-    background: transparent !important;
   }
 
-  /* Specific styling for your profile portrait frame */
   img[src*="portrait"] {
     width: 260px !important;
     min-width: 260px !important;
@@ -113,59 +192,9 @@
     border: 1px solid #d4af37 !important;
     padding: 8px !important;
     background: #1a1a1a !important;
-    border-radius: 0px !important;
-    position: relative !important;
-    z-index: 5 !important;
   }
 
-  /* Fixes the text wrapper next to the photo to prevent bleeding */
-  div:has(> img[src*="portrait"]) + div,
-  section:has(img[src*="portrait"]) div[class*="w-"] {
-    flex: 1 !important;
-    position: relative !important;
-    z-index: 5 !important;
-    background: transparent !important;
-  }
-
-  /* 5. Precision Typography Overrides (Beating the Light Blue Color) */
-  /* Headers: Crisp, elegant off-white */
-  h1, h2, h3, h4, 
-  [class*="font-serif"],
-  div[id="root"] h2 {
-    font-family: 'Cormorant Garamond', serif !important;
-    color: #fcfbfa !important; /* Pure elegant white/cream */
-    font-weight: 400 !important;
-    margin-bottom: 16px !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  /* Paragraphs & Core Text: Crisp light grey instead of light blue */
-  p, span, li, 
-  [class*="text-zinc-"], 
-  [class*="text-neutral-"], 
-  [class*="text-slate-"] {
-    color: #e2e8f0 !important; /* Clear, highly scannable off-white/grey text */
-    font-size: 1.05rem !important;
-    line-height: 1.75 !important;
-  }
-
-  /* Spacing cleanup */
-  p {
-    margin-top: 0 !important;
-    margin-bottom: 18px !important;
-  }
-
-  /* Golden/Yellow Emphasis Text formatting */
-  em, strong, 
-  [class*="text-gold"], 
-  [class*="text-amber-"],
-  section h2 + p {
-    color: #e5c158 !important; /* Atoms gold signature */
-    font-style: italic !important;
-    font-family: 'Cormorant Garamond', serif !important;
-  }
-
-  /* Neutralizing framework backgrounds that bleed through */
+  /* Global Resetting to neutralize background leaks */
   .min-h-screen, main, section, div[class*="bg-neutral-"] {
     background: transparent !important;
     padding: 0 !important;
