@@ -17,90 +17,87 @@
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <style>
-  /* 1. Sets the global parchment backdrop */
-  html {
+  /* 1. Global Page Setup & Import Elegant Typography */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  html, body {
     background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important;
     background-size: cover !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    background-color: #1a1a1a !important;
-    min-height: 100%;
-  }
-
-  /* 2. Resets the body layout and centres the main content block */
-  body {
+    background-color: #121212 !important;
     margin: 0;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 0;
+    font-family: 'Inter', sans-serif !important;
+    color: #e2e8f0 !important;
     min-height: 100vh;
-    position: relative !important;
-    z-index: 1 !important;
   }
 
-  /* 3. The main dark card containing your text - Elevated to sit on top */
-  div[id="root"] {
-    max-width: 750px;
-    width: 100%;
-    background: rgba(26, 26, 26, 0.94) !important; /* Slightly richer dark to mask overlapping art */
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-    box-sizing: border-box;
-    position: relative !important;
-    z-index: 10 !important; /* Pushes the card forward */
-  }
-
-  /* 4. Tames ALL floating asset blocks, fades them, and pushes them behind the card */
-  div[style*="background-image"], .absolute, [class*="absolute"] {
-    position: absolute !important;
-    z-index: -1 !important; /* Drops them behind your text card */
-    opacity: 0.15 !important; /* Crucial: Fades them to 15% brightness just like the atoms screenshot */
-    mix-blend-mode: screen !important; /* Blends the black edges seamlessly into the charcoal background */
-    pointer-events: none !important;
-  }
-
-  /* Specific fix to slide the gold zodiac wheel beautifully over to the right side */
-  div[style*="hero-parchment-texture.png"] ~ div[style*="background-image"],
-  .min-h-screen > div:first-child {
-    max-width: 500px !important;
-    width: 100% !important;
-    right: 5% !important; /* Pins it to the right side exactly like screenshot 22.40.35 */
-    top: 10% !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-  }
-
-  /* 5. Strips the extra dark nesting backgrounds */
-  .min-h-screen, [class*="min-h-screen"], section, div {
+  /* 2. Seamlessly Clears Out Rigid Background Layout Containers */
+  div[id="root"], .min-h-screen, main, [class*="bg-"] {
     background: transparent !important;
     background-color: transparent !important;
     box-shadow: none !important;
-    border-radius: 0 !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
   }
 
-  /* 6. Typography adjustments for clean readability */
-  h1, h2, h3, p, div, span, label, a {
-    color: #f5f5dc !important;
-    position: static !important;
-    font-family: 'Georgia', serif !important;
+  /* 3. Typography Correction - Replicating Atoms Exactly */
+  h1, h2, h3, [class*="font-serif"] {
+    font-family: 'Cormorant Garamond', serif !important;
+    color: #f5f5dc !important; /* Authentic warm parchment cream */
+    font-weight: 500 !important;
+    letter-spacing: -0.02em !important;
   }
 
-  h1 {
-    font-size: 2.4rem !important;
-    line-height: 1.3 !important;
-    margin-bottom: 24px !important;
-    text-align: center !important;
+  p, span, label, input, textarea {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 300 !important;
+    line-height: 1.7 !important;
+    color: #94a3b8 !important; /* Soft, readable silver-grey text */
   }
 
-  /* 7. Understated gold lines between sections */
-  section {
-    width: 100%;
-    margin: 40px 0 !important;
-    padding-bottom: 30px;
+  /* Highlight/Gold Text Styling */
+  .text-gold, [class*="text-gold"], em, strong {
+    color: #d4af37 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+  }
+
+  /* 4. Tames Overlarge Vector Graphics & Background Overlays */
+  div[style*="background-image"], svg, img[src*="svg"] {
+    max-width: 450px !important;
+    height: auto !important;
+    opacity: 0.25 !important; /* Softens them to an elegant watermark accent */
+    mix-blend-mode: screen !important;
+  }
+
+  /* Keeps background icons tucked safely behind sections */
+  .absolute, [class*="absolute"] {
+    position: absolute !important;
+    pointer-events: none !important;
+  }
+
+  /* 5. Portrait Image Mirror Layout */
+  .profile-container img, [class*="rounded"] img, img[alt*="Joshua"] {
+    width: 280px !important;
+    height: 380px !important;
+    object-fit: cover !important;
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    border-radius: 4px !important;
+    opacity: 1.0 !important; /* Ensures your photo is completely bright and sharp */
+  }
+
+  /* 6. Contact Form Inputs Fix */
+  input, textarea {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: none !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+    padding: 12px 4px !important;
+    color: #f5f5dc !important;
   }
 </style></head>
 
