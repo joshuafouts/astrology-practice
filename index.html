@@ -1,4 +1,5 @@
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="https://public-frontend-1300249583.cos.ap-nanjing.myqcloud.com/commonfile/DefaultAppLogo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
     <link rel="modulepreload" crossorigin="" href="/assets/router-vendor-gEA3V6qE.js">
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
 <style>
   /* 1. Global Page Canvas & Main Atoms Panel */
   html, body {
@@ -60,7 +62,8 @@
 
   /* Centering the subtitle subheaders directly under your name */
   div[id="root"] > div > p, 
-  div[id="root"] > div > span {
+  div[id="root"] > div > span,
+  .relative.z-10.max-w-3xl.mx-auto.text-center p {
     text-align: center !important;
     display: block !important;
     margin-left: auto !important;
@@ -78,7 +81,8 @@
   /* Top Accent Labels / Section Intro Tags */
   span.tracking-wider, 
   div[id="root"] > div > span,
-  section > span {
+  section > span,
+  .text-gold.text-sm.tracking-\[0\.3em\] {
     font-family: 'Inter', sans-serif !important;
     font-size: 0.85rem !important;
     letter-spacing: 0.15em !important;
@@ -99,7 +103,7 @@
   p { margin-top: 0 !important; margin-bottom: 18px !important; }
 
   /* Gold Signatures / Stylized Emphasis Quotes */
-  em, strong, [class*="text-gold"], [class*="text-amber-"] {
+  em, strong, [class*="text-gold"], [class*="text-amber-"], .text-gold\/80 {
     color: #e5c158 !important;
     font-style: italic !important;
     font-family: 'Cormorant Garamond', serif !important;
@@ -115,16 +119,15 @@
     margin-top: 30px !important;
   }
 
-  .grid > div, [class*="border-neutral-"] {
+  .grid > div, [class*="border-neutral-"], bg-charcoal\/60 {
     background: rgba(255, 255, 255, 0.01) !important;
     border: 1px solid rgba(212, 175, 55, 0.12) !important;
     padding: 34px !important;
     border-radius: 4px !important;
+    transform: none !important; /* Strips Tailwind's uneven box offsets */
   }
 
-  .grid > div h3, 
-  .grid > div [class*="font-semibold"],
-  .grid > div div:first-child {
+  .grid > div h3 {
     color: #e5c158 !important;
     font-family: 'Cormorant Garamond', serif !important;
     font-style: italic !important;
@@ -134,7 +137,7 @@
     letter-spacing: 0em !important;
   }
 
-  .grid > div p, .grid > div span, .grid > div [class*="text-sm"] {
+  .grid > div p {
     color: #cbd5e1 !important;
     font-size: 1.0rem !important;
     text-transform: none !important;
@@ -144,14 +147,10 @@
   }
 
   /* 4. Nuclear Fix to Force Biography Layout Side-by-Side */
-  /* Aggressively forces the About section layout to stop vertical stacking */
   section:has(img[src*="portrait"]), 
-  div:has(> img[src*="portrait"]),
-  main > div:nth-child(3),
-  [class*="space-y-"].md\:flex-row,
-  .min-h-screen > div:nth-child(3) {
+  .py-32:has(img[src*="joshportrait"]) .max-w-5xl > .grid {
     display: grid !important;
-    grid-template-columns: 280px 1fr !important; /* Two clean columns */
+    grid-template-columns: 280px 1fr !important; /* Two precise side-by-side columns */
     gap: 50px !important;
     align-items: flex-start !important;
     margin-top: 50px !important;
@@ -159,7 +158,14 @@
     width: 100% !important;
   }
 
-  img[src*="portrait"] {
+  /* Target the column divs to allow clean grid splitting */
+  .py-32:has(img[src*="joshportrait"]) .max-w-5xl > .grid > div {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  img[src*="portrait"], img[src*="joshportrait"] {
     width: 280px !important;
     max-width: 280px !important;
     height: 380px !important;
@@ -168,40 +174,159 @@
     padding: 8px !important;
     background: #1a1a1a !important;
     box-sizing: border-box !important;
-    grid-column: 1 !important; /* Locks photo in first column */
   }
 
-  /* Locks your bio text box into the second column right next to the portrait */
-  section:has(img[src*="portrait"]) > div:not(:has(img)),
-  div:has(> img[src*="portrait"]) > div:not(:has(img)) {
-    grid-column: 2 !important;
+  /* 5. Taming Graphics and Horizontal Accent Dividers */
+  img[src*="celestial-zodiac-wheel"] {
+    max-width: 180px !important;
+    height: auto !important;
+    margin: 20px auto 30px auto !important;
+    display: block !important;
+    opacity: 0.65 !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  svg, div:has(> svg), img[src*="divider"] {
+    max-width: 140px !important;
+    height: auto !important;
+    margin: 30px auto 40px auto !important;
+    display: block !important;
+  }
+
+  /* 6. Contact Section & Interactive Inputs Alignment */
+  form {
+    max-width: 600px !important;
+    margin: 40px auto 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  a[href^="mailto:"] {
+    color: #e5c158 !important;
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.4rem !important;
+    font-style: italic !important;
+    display: block !important;
+    margin: 15px auto !important;
+    text-align: center !important;
+  }
+
+  input, textarea {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fcfbfa !important;
+    padding: 12px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  input:focus, textarea:focus {
+    outline: none !important;
+    border-bottom: 1px solid #e5c158 !important;
+  }
+
+  button[type="submit"] {
+    background-color: #b38f2d !important;
+    color: #0c0c0c !important;
+    font-family: 'Inter', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    padding: 14px 28px !important;
+    border-radius: 4px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    margin-top: 10px !important;
     width: 100% !important;
   }
 
-  /* 5. Taming Graphics and</head>
+  button[type="submit"]:hover {
+    background-color: #d4af37 !important;
+  }
 
-  <body data-new-gr-c-s-check-loaded="14.1297.0" data-gr-ext-installed="">
-    <div id="root"><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section><div class="min-h-screen bg-charcoal"><section class="relative min-h-screen flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url(&quot;https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png&quot;);"></div><div class="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/60 to-charcoal"></div><div class="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-10 lg:opacity-15"><img src="https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpryaagxa/celestial-zodiac-wheel.png" alt="" class="w-full h-full object-contain" aria-hidden="true"></div><div class="relative z-10 max-w-3xl mx-auto px-6 text-center"><div class="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-12"></div><p class="text-gold-light text-sm tracking-[0.3em] uppercase mb-6 font-sans font-light">Joshua Fouts</p><p class="text-parchment-dark/70 text-base tracking-[0.15em] uppercase mb-10 font-sans font-light">Archetypal Astrologer &amp; Depth Psychology Therapist</p><h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-parchment mb-8">The most important relationship<br><span class="italic text-gold-light">you will ever have is with yourself.</span></h1><p class="text-parchment-dark/70 text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto mb-12">Helping you navigate toward authenticity and healing — where the path unfolds through being fundamentally heard, understood, and accompanied.</p><div class="w-24 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent mx-auto"></div></div><div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50"><span class="text-xs tracking-widest uppercase text-parchment/50">Explore</span><div class="w-px h-8 bg-gradient-to-b from-gold/50 to-transparent"></div></div></section><section class="py-32 px-6 bg-charcoal-light/30"><div class="max-w-5xl mx-auto"><div class="text-center mb-20"><p class="text-gold text-sm tracking-[0.3em] uppercase mb-4 font-sans">Offerings</p><h2 class="font-serif text-3xl md:text-4xl text-parchment font-medium">How I Can Help</h2></div><div class="flex justify-center mb-16"><img src="https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtoaiaagwa/geometric-gold-divider.png" alt="" class="w-48 h-auto opacity-40" aria-hidden="true"></div><div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"><div class="
-                group p-8 lg:p-10 bg-charcoal/60 backdrop-blur-sm
-                border border-charcoal-light/50
-                border-l-2 border-l-gold/60 md:translate-y-4
-                hover:border-gold/30 transition-all duration-500
-              "><div class="w-2 h-2 rounded-full bg-gold/70 mb-6 group-hover:bg-gold transition-colors duration-300"></div><h3 class="font-serif text-xl lg:text-2xl text-parchment mb-4 group-hover:text-gold-light transition-colors duration-300">Psychedelic Integration Counseling</h3><p class="text-parchment-dark/60 font-light leading-relaxed text-sm lg:text-base">Helping the plant medicine community with meaning-making after journeys. Psychedelic integration therapy is a journey, not a destination — together we explore what has been revealed and how it transforms your life.</p></div><div class="
-                group p-8 lg:p-10 bg-charcoal/60 backdrop-blur-sm
-                border border-charcoal-light/50
-                border-r-2 border-r-gold/60 md:-translate-y-4
-                hover:border-gold/30 transition-all duration-500
-              "><div class="w-2 h-2 rounded-full bg-gold/70 mb-6 group-hover:bg-gold transition-colors duration-300"></div><h3 class="font-serif text-xl lg:text-2xl text-parchment mb-4 group-hover:text-gold-light transition-colors duration-300">Depth Psychology Therapy</h3><p class="text-parchment-dark/60 font-light leading-relaxed text-sm lg:text-base">Rooted in the traditions of Pacifica Graduate Institute, this therapeutic approach honors the soul's need for meaning. The path to healing can be found by being fundamentally heard, understood, and accompanied.</p></div><div class="
-                group p-8 lg:p-10 bg-charcoal/60 backdrop-blur-sm
-                border border-charcoal-light/50
-                border-l-2 border-l-gold/60 md:translate-y-4
-                hover:border-gold/30 transition-all duration-500
-              "><div class="w-2 h-2 rounded-full bg-gold/70 mb-6 group-hover:bg-gold transition-colors duration-300"></div><h3 class="font-serif text-xl lg:text-2xl text-parchment mb-4 group-hover:text-gold-light transition-colors duration-300">Archetypal Astrology</h3><p class="text-parchment-dark/60 font-light leading-relaxed text-sm lg:text-base">With over 40 years of astrological study and practice, I offer counseling sessions exploring archetypal patterns and cosmic meaning — illuminating the symbolic language of the planets as they speak through your unique birth chart and life story.</p></div><div class="
-                group p-8 lg:p-10 bg-charcoal/60 backdrop-blur-sm
-                border border-charcoal-light/50
-                border-r-2 border-r-gold/60 md:-translate-y-4
-                hover:border-gold/30 transition-all duration-500
-              "><div class="w-2 h-2 rounded-full bg-gold/70 mb-6 group-hover:bg-gold transition-colors duration-300"></div><h3 class="font-serif text-xl lg:text-2xl text-parchment mb-4 group-hover:text-gold-light transition-colors duration-300">Plant Medicine Integration Coaching</h3><p class="text-parchment-dark/60 font-light leading-relaxed text-sm lg:text-base">Drawing on nearly 20 years in the Indigenous plant medicine community across multiple traditions, I offer integration coaching to help you weave ceremony insights into the fabric of your daily life.</p></div></div></div></section><section class="py-32 px-6 bg-charcoal"><div class="max-w-5xl mx-auto"><div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center"><div class="lg:col-span-2 flex justify-center"><div class="relative"><div class="absolute -inset-3 border border-gold/20"></div><div class="absolute -inset-1 border border-gold/10"></div><img src="joshportrait.jpeg" alt="Joshua Fouts" class="w-64 h-80 object-cover"><div class="absolute -top-3 -left-3 w-6 h-6 border-t border-l border-gold/50"></div><div class="absolute -bottom-3 -right-3 w-6 h-6 border-b border-r border-gold/50"></div></div></div><div class="lg:col-span-3"><p class="text-gold text-sm tracking-[0.3em] uppercase mb-4 font-sans">About</p><h2 class="font-serif text-3xl md:text-4xl text-parchment font-medium mb-8">Joshua Fouts</h2><div class="space-y-5 text-parchment-dark/70 font-light leading-relaxed"><p>I am a depth psychology therapist trained at Pacifica Graduate Institute in Santa Barbara, California — a tradition rooted in the work of Jung, Hillman, and the archetypal imagination.</p><p>Based in Helsinki, Finland, I work as a practicing counseling astrologer offering sessions both in person and online, in English and Portuguese.</p><p>I have been a practicing astrologer for over 40 years, and a member of the Indigenous plant medicine community across multiple traditions for nearly 20 years. These long relationships with both cosmic and sacred plant wisdom inform my approach and give me a deep understanding of the integration process.</p><p>I am honored to provide psychedelic integration counseling and coaching — helping people make meaning of their journeys and weave those insights into a life of greater authenticity and wholeness.</p><p class="text-gold/80 italic font-serif text-lg">"Finding a good therapy relationship makes healing feel possible."</p></div></div></div></div></section><section class="py-32 px-6 bg-charcoal-light/20"><div class="max-w-2xl mx-auto"><div class="text-center mb-16"><p class="text-gold text-sm tracking-[0.3em] uppercase mb-4 font-sans">Get in Touch</p><h2 class="font-serif text-3xl md:text-4xl text-parchment font-medium mb-4">Begin the Conversation</h2><p class="text-parchment-dark/60 font-light leading-relaxed max-w-lg mx-auto">Available in English and Portuguese, in person in Helsinki, Finland or online worldwide. Reach out to explore how we might work together.</p></div><div class="text-center mb-12"><a href="mailto:josh.fouts@gmail.com" class="text-gold hover:text-gold-light transition-colors duration-300 font-light text-lg">josh.fouts@gmail.com</a></div><form class="space-y-8"><div><label for="name" class="block text-xs tracking-[0.2em] uppercase text-parchment-dark/50 mb-3 font-sans">Name</label><input type="text" id="name" name="name" required="" class="w-full bg-transparent border-b border-charcoal-light/80 pb-3 text-parchment font-light focus:border-gold/60 focus:outline-none transition-colors duration-300 placeholder:text-parchment-dark/30" placeholder="Your full name" value=""></div><div><label for="email" class="block text-xs tracking-[0.2em] uppercase text-parchment-dark/50 mb-3 font-sans">Email</label><input type="email" id="email" name="email" required="" class="w-full bg-transparent border-b border-charcoal-light/80 pb-3 text-parchment font-light focus:border-gold/60 focus:outline-none transition-colors duration-300 placeholder:text-parchment-dark/30" placeholder="your@email.com" value=""></div><div><label for="message" class="block text-xs tracking-[0.2em] uppercase text-parchment-dark/50 mb-3 font-sans">Message</label><textarea id="message" name="message" required="" rows="5" class="w-full bg-transparent border-b border-charcoal-light/80 pb-3 text-parchment font-light focus:border-gold/60 focus:outline-none transition-colors duration-300 resize-none placeholder:text-parchment-dark/30" placeholder="Share what draws you to this work..."></textarea></div><div class="pt-4"><button type="submit" class="w-full py-4 bg-gold/90 hover:bg-gold text-charcoal font-sans text-sm tracking-[0.2em] uppercase transition-all duration-300 hover:tracking-[0.3em]">Send Message</button></div></form><div class="w-16 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-auto mt-20"></div></div></section><footer class="py-12 px-6 bg-charcoal text-center border-t border-charcoal-light/30"><p class="text-parchment-dark/40 text-sm font-light tracking-wide">© 2026 Joshua Fouts — Archetypal Astrology &amp; Depth Psychology</p></footer></div></div>
-  
+  /* Neutralizing structural parent framework wrappers */
+  .min-h-screen, main, section, div[class*="bg-charcoal"] {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 
-<div class="calendly-frame-tag" manager_id="32432f39-1d4c-47a7-a29a-ae6eda2a8df4" id="32432f39-1d4c-47a7-a29a-ae6eda2a8df4" style="height: 0px; width: 0px; visibility: hidden;"></div><div class="calendly-lifecycle-optibutton_singleton"></div><div id="mgx-shadow-host"></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+  /* Padding adjustments for clear spacing sections */
+  section.py-32 {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+</style>
+</head>
+
+<body>
+    <div id="root">
+        <section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section>
+        <div class="min-h-screen bg-charcoal">
+            <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+                <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+                    <img src="https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpryaagxa/celestial-zodiac-wheel.png" alt="" aria-hidden="true">
+                    <p class="text-gold-light text-sm tracking-[0.3em] uppercase mb-6 font-sans font-light">Joshua Fouts</p>
+                    <p class="text-parchment-dark/70 text-base tracking-[0.15em] uppercase mb-10 font-sans font-light">Archetypal Astrologer &amp; Depth Psychology Therapist</p>
+                    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-parchment mb-8">The most important relationship<br><span class="italic text-gold-light">you will ever have is with yourself.</span></h1>
+                    <p class="text-parchment-dark/70 text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto mb-12">Helping you navigate toward authenticity and healing — where the path unfolds through being fundamentally heard, understood, and accompanied.</p>
+                </div>
+            </section>
+
+            <section class="py-32 px-6 bg-charcoal-light/30">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-20">
+                        <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4 font-sans">Offerings</p>
+                        <h2 class="font-serif text-3xl md:text-4xl text-parchment font-medium">How I Can Help</h2>
+                    </div>
+                    <div class="flex justify-center mb-16">
+                        <img src="https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtoaiaagwa/geometric-gold-divider.png" alt="" aria-hidden="true">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                        <div class="group p-8 lg:p-10">
+                            <div class="w-2 h-2 rounded-full bg-gold/70 mb-6"></div>
+                            <h3>Psychedelic Integration Counseling</h3>
+                            <p>Helping the plant medicine community with meaning-making after journeys. Psychedelic integration therapy is a journey, not a destination — together we explore what has been revealed and how it transforms your life.</p>
+                        </div>
+                        <div class="group p-8 lg:p-10">
+                            <div class="w-2 h-2 rounded-full bg-gold/70 mb-6"></div>
+                            <h3>Depth Psychology Therapy</h3>
+                            <p>Rooted in the traditions of Pacifica Graduate Institute, this therapeutic approach honors the soul's need for meaning. The path to healing can be found by being fundamentally heard, understood, and accompanied.</p>
+                        </div>
+                        <div class="group p-8 lg:p-10">
+                            <div class="w-2 h-2 rounded-full bg-gold/70 mb-6"></div>
+                            <h3>Archetypal Astrology</h3>
+                            <p>With over 40 years of astrological study and practice, I offer counseling sessions exploring archetypal patterns and cosmic meaning — illuminating the symbolic language of the planets as they speak through your unique birth chart and life story.</p>
+                        </div>
+                        <div class="group p-8 lg:p-10">
+                            <div class="w-2 h-2 rounded-full bg-gold/70 mb-6"></div>
+                            <h3>Plant Medicine Integration Coaching</h3>
+                            <p>Drawing on nearly 20 years in the Indigenous plant medicine community across multiple traditions, I offer integration coaching to help you weave ceremony insights into the fabric of your daily life.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-32 px-6 bg-charcoal">
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid">
+                        <div class="flex justify-center">
+                            <img src="joshportrait.jpeg" alt="Joshua Fouts">
+                        </div>
+                        <div>
+                            <p class="text-gold text-sm tracking-[0.3em] uppercase mb-4 font-sans">About</p>
+                            <h2 class="font-serif text-3xl md:text-4xl text-parchment font-medium mb-8">Joshua Fouts</h2>
+                            <div class="space-y-5 text-parch
