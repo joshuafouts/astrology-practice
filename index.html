@@ -45,8 +45,7 @@
     z-index: 10 !important;
   }
 
-  /* 2. Top Header & Typography Consistency Fixes */
-  /* Standardizes header sizing cleanly from the top down */
+  /* 2. Precision Typography & Hierarchy Customization */
   h1, [class*="text-4xl"], [class*="text-5xl"] {
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 2.8rem !important;
@@ -56,7 +55,7 @@
     margin-bottom: 16px !important;
   }
 
-  h2, [class*="text-3xl"], [class*="text-2xl"] {
+  h2, [class*="text-3xl"], [class*="text-2xl"], .grid h3 {
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 2.1rem !important;
     color: #fcfbfa !important;
@@ -64,39 +63,107 @@
     margin-bottom: 14px !important;
   }
 
-  h3, [class*="text-xl"] {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 1.4rem !important;
-    color: #fcfbfa !important;
-    font-weight: 400 !important;
-  }
-
-  /* Subtitles / Small Labels (like "Joshua Fouts", "Get In Touch", "Offerings") */
-  [class*="text-xs"], [class*="text-sm"], [class*="tracking-wider"] {
+  /* Top Accent Labels / Section Intro Tags */
+  span.tracking-wider, 
+  div[id="root"] > div > span,
+  section > span {
     font-family: 'Inter', sans-serif !important;
     font-size: 0.85rem !important;
     letter-spacing: 0.15em !important;
     text-transform: uppercase !important;
-    color: #e5c158 !important; /* Forces consistent gold tone for accents */
+    color: #e5c158 !important;
+    display: inline-block !important;
+    margin-bottom: 8px !important;
   }
 
-  /* Clean up Body Text */
+  /* Core Body Text Style Across the Board */
   p, span, li, [class*="text-zinc-"], [class*="text-neutral-"], [class*="text-slate-"] {
     color: #e2e8f0 !important;
     font-size: 1.05rem !important;
     line-height: 1.75 !important;
+    text-transform: none !important; /* Protects against accidental framework uppercase inheritances */
   }
 
   p { margin-top: 0 !important; margin-bottom: 18px !important; }
 
-  /* Gold Highlight/Emphasis Phrases */
+  /* Gold Signatures / Stylized Emphasis Quotes */
   em, strong, [class*="text-gold"], [class*="text-amber-"] {
     color: #e5c158 !important;
     font-style: italic !important;
     font-family: 'Cormorant Garamond', serif !important;
+    text-transform: none !important;
   }
 
-  /* 3. Taming Graphics and Icons */
+  /* 3. Services Grid Customization (Fixes All-Caps & Gold Font Loop) */
+  .grid, [class*="grid-cols-"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-top: 30px !important;
+  }
+
+  .grid > div, [class*="border-neutral-"] {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(212, 175, 55, 0.12) !important;
+    padding: 34px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Targets the card headers specifically for the italicized gold look */
+  .grid > div h3, 
+  .grid > div [class*="font-semibold"],
+  .grid > div div:first-child {
+    color: #e5c158 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+    font-size: 1.45rem !important;
+    text-transform: none !important;
+    margin-bottom: 12px !important;
+    letter-spacing: 0em !important;
+  }
+
+  /* Forces descriptions inside the boxes back to clean, legible casing and off-white tone */
+  .grid > div p, 
+  .grid > div span,
+  .grid > div [class*="text-sm"] {
+    color: #cbd5e1 !important; /* Soft premium grey text */
+    font-size: 1.0rem !important;
+    text-transform: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-style: normal !important;
+    line-height: 1.65 !important;
+  }
+
+  /* 4. Elegant Biography & Portrait Layout Re-balancing */
+  section:has(img[src*="portrait"]), 
+  div:has(> img[src*="portrait"]) {
+    display: grid !important;
+    grid-template-columns: 280px 1fr !important; /* Locks layout columns securely */
+    gap: 50px !important;
+    align-items: flex-start !important;
+    margin-top: 50px !important;
+    background: transparent !important;
+  }
+
+  img[src*="portrait"] {
+    width: 280px !important;
+    max-width: 280px !important;
+    height: 380px !important;
+    object-fit: cover !important;
+    border: 1px solid #d4af37 !important;
+    padding: 8px !important;
+    background: #1a1a1a !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Stylizing the About Heading Tag */
+  section:has(img[src*="portrait"]) h2,
+  div:has(> img[src*="portrait"]) h2 {
+    margin-top: 0 !important;
+  }
+
+  /* 5. Taming Graphics and Horizontal Accent Dividers */
   img[src*="astrology-wheel"], img[src*="zodiac"] {
     max-width: 180px !important;
     height: auto !important;
@@ -108,12 +175,11 @@
   svg, div:has(> svg), img[src*="divider"] {
     max-width: 140px !important;
     height: auto !important;
-    margin: 30px auto !important;
+    margin: 30px auto 40px auto !important;
     display: block !important;
   }
 
-  /* 4. Contact Section Layout & Alignment Fixes */
-  /* Centers and bounds the contact fields to keep them from stretching awkwardly */
+  /* 6. Contact Section & Interactive Inputs Alignment */
   form, div:has(> form) {
     max-width: 600px !important;
     margin: 40px auto 0 auto !important;
@@ -123,35 +189,29 @@
     gap: 24px !important;
   }
 
-  /* Strips the ugly blue default browser link box showing in the screenshot */
   a[href^="mailto:"] {
     color: #e5c158 !important;
     text-decoration: none !important;
     border: none !important;
     outline: none !important;
     font-family: 'Cormorant Garamond', serif !important;
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
     font-style: italic !important;
     display: block !important;
     margin: 15px auto !important;
     text-align: center !important;
   }
-  
-  a[href^="mailto:"]:focus, a[href^="mailto:"]:active {
-    outline: none !important;
-    box-shadow: none !important;
-  }
 
-  /* Form Fields styling for clean, consistent underlines */
   input, textarea {
     background: transparent !important;
     border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
     color: #fcfbfa !important;
-    padding: 10px 0 !important;
+    padding: 12px 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
     border-radius: 0 !important;
+    font-family: 'Inter', sans-serif !important;
   }
 
   input:focus, textarea:focus {
@@ -159,42 +219,27 @@
     border-bottom: 1px solid #e5c158 !important;
   }
 
-  /* 5. Services Grid Blocks */
-  .grid, [class*="grid-cols-"] {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
-    gap: 24px !important;
-    width: 100% !important;
-    margin-top: 30px !important;
-  }
-
-  .grid > div, [class*="border-neutral-"] {
-    background: rgba(255, 255, 255, 0.01) !important;
-    border: 1px solid rgba(212, 175, 55, 0.12) !important;
-    padding: 30px !important;
+  button[type="submit"], [class*="bg-amber-"], input[type="submit"] {
+    background-color: #b38f2d !important;
+    color: #0c0c0c !important;
+    font-family: 'Inter', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    padding: 14px 28px !important;
     border-radius: 4px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    margin-top: 10px !important;
   }
 
-  /* 6. Biography Layout Structure */
-  section:has(img[src*="portrait"]), div:has(> img[src*="portrait"]) {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 48px !important;
-    align-items: flex-start !important;
-    margin-top: 40px !important;
+  button[type="submit"]:hover {
+    background-color: #d4af37 !important;
   }
 
-  img[src*="portrait"] {
-    width: 260px !important;
-    min-width: 260px !important;
-    height: 350px !important;
-    object-fit: cover !important;
-    border: 1px solid #d4af37 !important;
-    padding: 8px !important;
-    background: #1a1a1a !important;
-  }
-
-  /* Global Resetting to neutralize background leaks */
+  /* Neutralizing structural parent framework wrappers */
   .min-h-screen, main, section, div[class*="bg-neutral-"] {
     background: transparent !important;
     padding: 0 !important;
