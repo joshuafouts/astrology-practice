@@ -48,15 +48,14 @@
   }
 
   /* 2. Top Header & Typography Consistency Fixes */
-  /* Centering and sizing your main name banner */
   h1, [class*="text-4xl"], [class*="text-5xl"], div[id="root"] > div > h1 {
     font-family: 'Cormorant Garamond', serif !important;
-    font-size: 3.4rem !important; /* Larger, commanding size */
+    font-size: 3.4rem !important;
     color: #fcfbfa !important;
     font-weight: 400 !important;
     line-height: 1.2 !important;
     margin-bottom: 20px !important;
-    text-align: center !important; /* Centered precisely */
+    text-align: center !important;
     width: 100% !important;
   }
 
@@ -78,7 +77,7 @@
     margin-bottom: 14px !important;
   }
 
-  /* Top Accent Labels / Section Intro Tags */
+  /* Section Intro Labels */
   span.tracking-wider, 
   div[id="root"] > div > span,
   section > span,
@@ -93,7 +92,7 @@
   }
 
   /* Core Body Text Style Across the Board */
-  p, span, li, [class*="text-zinc-"], [class*="text-neutral-"], [class*="text-slate-"] {
+  p, span, li, [class*="text-zinc-"], [class*="text-neutral-"], [class*="text-slate-"], [class*="text-parchment-dark"] {
     color: #e2e8f0 !important;
     font-size: 1.05rem !important;
     line-height: 1.75 !important;
@@ -103,7 +102,7 @@
   p { margin-top: 0 !important; margin-bottom: 18px !important; }
 
   /* Gold Signatures / Stylized Emphasis Quotes */
-  em, strong, [class*="text-gold"], [class*="text-amber-"], .text-gold\/80 {
+  em, strong, [class*="text-gold"], [class*="text-amber-"], .text-gold\/80, .italic.text-gold-light {
     color: #e5c158 !important;
     font-style: italic !important;
     font-family: 'Cormorant Garamond', serif !important;
@@ -119,12 +118,12 @@
     margin-top: 30px !important;
   }
 
-  .grid > div, [class*="border-neutral-"], bg-charcoal\/60 {
-    background: rgba(255, 255, 255, 0.01) !important;
+  .grid > div, [class*="border-neutral-"], [class*="bg-charcoal\/60"] {
+    background: rgba(255, 255, 255, 0.02) !important;
     border: 1px solid rgba(212, 175, 55, 0.12) !important;
     padding: 34px !important;
     border-radius: 4px !important;
-    transform: none !important; /* Strips Tailwind's uneven box offsets */
+    transform: none !important;
   }
 
   .grid > div h3 {
@@ -146,20 +145,17 @@
     line-height: 1.65 !important;
   }
 
-/* 4. Nuclear Fix to Force Biography Layout Side-by-Side */
-  section:has(img[src*="portrait"]), 
-  .py-32:has(img[src*="joshportrait"]) .max-w-5xl > .grid {
+  /* 4. Biography Side-by-Side Layout Grid */
+  section.py-32:has(img[src*="joshportrait"]) .max-w-5xl > .grid {
     display: grid !important;
-    grid-template-columns: 280px 1fr !important; /* Two precise side-by-side columns */
+    grid-template-columns: 280px 1fr !important; /* Forces side-by-side split */
     gap: 50px !important;
     align-items: flex-start !important;
-    margin-top: 50px !important;
-    background: transparent !important;
     width: 100% !important;
   }
 
-  /* Target the column divs to allow clean grid splitting */
-  .py-32:has(img[src*="joshportrait"]) .max-w-5xl > .grid > div {
+  /* Strips background boxes from bio container elements */
+  section.py-32:has(img[src*="joshportrait"]) .max-w-5xl > .grid > div {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
@@ -176,21 +172,11 @@
     box-sizing: border-box !important;
   }
 
-  /* GLOBAL BIO ILLUMINATION: Overrides all fractional opacities to force text visible */
-  .py-32:has(img[src*="joshportrait"]) p,
-  .py-32:has(img[src*="joshportrait"]) span,
-  .py-32:has(img[src*="joshportrait"]) div {
-    color: #fcfbfa !important; /* Premium crisp off-white */
-    font-size: 1.05rem !important;
-    line-height: 1.75 !important;
-  }
-  
-  /* Retains your beautiful quote signature gold styling */
-  .py-32:has(img[src*="joshportrait"]) p.text-gold\/80,
-  .py-32:has(img[src*="joshportrait"]) .italic {
-    color: #e5c158 !important;
-    font-family: 'Cormorant Garamond', serif !important;
-    font-style: italic !important;
+  /* Ensures all text inside the bio box shines clear and bright */
+  section.py-32:has(img[src*="joshportrait"]) p,
+  section.py-32:has(img[src*="joshportrait"]) span,
+  section.py-32:has(img[src*="joshportrait"]) h2 {
+    color: #fcfbfa !important;
   }
 
   /* 5. Taming Graphics and Horizontal Accent Dividers */
@@ -206,14 +192,15 @@
     transform: none !important;
   }
 
-  svg, div:has(> svg), img[src*="divider"] {
-    max-width: 140px !important;
+  img[src*="geometric-gold-divider"] {
+    max-width: 192px !important;
     height: auto !important;
-    margin: 30px auto 40px auto !important;
+    margin: 0 auto !important;
     display: block !important;
+    opacity: 0.4 !important;
   }
 
- /* 6. Contact Section & Interactive Inputs Alignment */
+  /* 6. Contact Section Form Styling */
   form {
     max-width: 600px !important;
     margin: 40px auto 0 auto !important;
@@ -223,23 +210,15 @@
     gap: 24px !important;
   }
 
-  /* GLOBAL CONTACT ILLUMINATION: Overrides hidden fields and headers */
-  .py-32:has(form) h2,
-  .py-32:has(form) p,
-  .py-32:has(form) label,
-  .py-32:has(form) div {
+  section.py-32:has(form) h2,
+  section.py-32:has(form) p,
+  section.py-32:has(form) label {
     color: #fcfbfa !important;
-  }
-  
-  .py-32:has(form) p {
-    color: #cbd5e1 !important;
   }
 
   a[href^="mailto:"] {
     color: #e5c158 !important;
     text-decoration: none !important;
-    border: none !important;
-    outline: none !important;
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 1.4rem !important;
     font-style: italic !important;
@@ -251,7 +230,7 @@
   input, textarea {
     background: transparent !important;
     border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important; /* Solid contrast accent border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
     color: #fcfbfa !important;
     padding: 12px 0 !important;
     width: 100% !important;
@@ -286,17 +265,18 @@
     background-color: #d4af37 !important;
   }
 
-  /* Neutralizing structural parent framework wrappers */
-  .min-h-screen, main, section, div[class*="bg-charcoal"] {
+  /* 7. Structural Layout Safety Reset */
+  /* Strips background styling safely without breaking heights or padding */
+  [class*="bg-charcoal"], [class*="bg-charcoal-light"] {
     background: transparent !important;
-    padding: 0 !important;
-    margin: 0 !important;
   }
 
-  /* Padding adjustments for clear spacing sections */
   section.py-32 {
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
   }
 </style>
 </head>
