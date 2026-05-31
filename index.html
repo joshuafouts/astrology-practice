@@ -17,87 +17,100 @@
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <style>
-  /* 1. Global Page Setup & Import Elegant Typography */
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+  /* 1. Import Premium Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@200;300;400&display=swap');
 
+  /* 2. Global Canvas Setup */
   html, body {
     background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important;
     background-size: cover !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    background-color: #121212 !important;
+    background-color: #0e0e0e !important;
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif !important;
-    color: #e2e8f0 !important;
     min-height: 100vh;
   }
 
-  /* 2. Seamlessly Clears Out Rigid Background Layout Containers */
-  div[id="root"], .min-h-screen, main, [class*="bg-"] {
-    background: transparent !important;
+  /* 3. Strip All Stubborn Tailwind Layout Container Fills */
+  div, main, section, [class*="bg-"] {
     background-color: transparent !important;
+    background: transparent !important;
     box-shadow: none !important;
-    border: none !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
+    border-color: rgba(212, 175, 55, 0.15) !important;
   }
 
-  /* 3. Typography Correction - Replicating Atoms Exactly */
-  h1, h2, h3, [class*="font-serif"] {
-    font-family: 'Cormorant Garamond', serif !important;
-    color: #f5f5dc !important; /* Authentic warm parchment cream */
-    font-weight: 500 !important;
-    letter-spacing: -0.02em !important;
-  }
-
-  p, span, label, input, textarea {
+  /* 4. Nuclear Override for Body and Subtitle Text Colors */
+  p, span, label, li, 
+  [class*="text-zinc-"], [class*="text-neutral-"], [class*="text-slate-"], [class*="text-gray-"] {
+    color: #94a3b8 !important; /* Soft silver-grey */
     font-family: 'Inter', sans-serif !important;
     font-weight: 300 !important;
-    line-height: 1.7 !important;
-    color: #94a3b8 !important; /* Soft, readable silver-grey text */
+    line-height: 1.75 !important;
   }
 
-  /* Highlight/Gold Text Styling */
-  .text-gold, [class*="text-gold"], em, strong {
+  /* 5. Nuclear Override for Main Headings & Titles */
+  h1, h2, h3, [class*="font-serif"], 
+  h1 *, h2 *, h3 * {
+    font-family: 'Cormorant Garamond', serif !important;
+    color: #f5f5dc !important; /* Authentic warm parchment cream */
+    font-weight: 400 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* Gold Accents and Italic Highlights */
+  strong, em, .text-gold, [class*="text-amber-"], [class*="text-yellow-"] {
     color: #d4af37 !important;
     font-family: 'Cormorant Garamond', serif !important;
     font-style: italic !important;
+    font-weight: 400 !important;
   }
 
-  /* 4. Tames Overlarge Vector Graphics & Background Overlays */
-  div[style*="background-image"], svg, img[src*="svg"] {
-    max-width: 450px !important;
-    height: auto !important;
-    opacity: 0.25 !important; /* Softens them to an elegant watermark accent */
+  /* 6. BANISH and TAME the Intrusive Zodiac Graphic */
+  div[style*="background-image"], 
+  div[class*="absolute"][class*="top-"],
+  svg {
+    position: fixed !important;
+    z-index: -10 !important; /* Locks it completely behind everything else */
+    opacity: 0.08 !important; /* Pushes it down to a whisper-quiet 8% watermark */
     mix-blend-mode: screen !important;
-  }
-
-  /* Keeps background icons tucked safely behind sections */
-  .absolute, [class*="absolute"] {
-    position: absolute !important;
     pointer-events: none !important;
+    max-width: 550px !important;
+    width: 100% !important;
+    height: 550px !important;
+    right: -50px !important; /* Marginally slips it off to the right wing */
+    top: 5% !important;
+    transform: none !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
   }
 
-  /* 5. Portrait Image Mirror Layout */
-  .profile-container img, [class*="rounded"] img, img[alt*="Joshua"] {
-    width: 280px !important;
-    height: 380px !important;
+  /* 7. Center-Aligning the Main Editorial Feed */
+  .min-h-screen {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 80px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Portrait Image Layout Anchor */
+  img[src*="portrait.jpg"] {
+    width: 260px !important;
+    height: 360px !important;
     object-fit: cover !important;
-    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
     border-radius: 4px !important;
-    opacity: 1.0 !important; /* Ensures your photo is completely bright and sharp */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
   }
 
-  /* 6. Contact Form Inputs Fix */
-  input, textarea {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: none !important;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
-    padding: 12px 4px !important;
-    color: #f5f5dc !important;
+  /* Section Dividers */
+  section {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    padding-bottom: 40px !important;
+    margin-bottom: 40px !important;
   }
 </style></head>
 
