@@ -17,7 +17,7 @@
     <link rel="stylesheet" crossorigin="" href="/assets/index-9u_Nu4By.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <style>
-  /* 1. Global Background Canvas (Edge-to-Edge Parchment) */
+  /* 1. Global Canvas & Page Containers */
   html, body {
     background-image: url("https://mgx-backend-cdn.metadl.com/generate/images/1275131/2026-05-25/phrtpoyaagvq/hero-parchment-texture.png") !important;
     background-size: cover !important;
@@ -31,21 +31,50 @@
     min-height: 100vh;
   }
 
-  /* 2. Re-enforcing the Atoms Central Charcoal Container Panel */
+  /* Atoms Main Dark Column Containment */
   div[id="root"] {
     max-width: 960px !important;
     width: 92% !important;
     margin: 60px auto !important;
-    background: #161616 !important; /* Re-establishes the clean dark layout background */
+    background: #161616 !important;
     padding: 50px 60px !important;
     border-radius: 8px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
     position: relative !important;
     z-index: 10 !important;
+    overflow: hidden !important;
   }
 
-  /* 3. Forces the Services Grid into Distinct Side-by-Side Blocks */
+  /* 2. Fixes for Oversized Graphics (Astrological Wheel & Line Dividers) */
+  /* This targets and tames the massive background wheel in the header */
+  div[id="root"] > div:first-child img,
+  img[src*="astrology-wheel"], 
+  img[src*="zodiac"] {
+    max-width: 220px !important;
+    height: auto !important;
+    margin: 0 auto 30px auto !important;
+    display: block !important;
+    opacity: 0.7 !important;
+    position: relative !important;
+  }
+
+  /* This shrinks the geometric alignment horizontal line symbol */
+  svg, 
+  div:has(> svg), 
+  [class*="absolute"] img[src*="vector"],
+  img[src*="divider"] {
+    max-width: 160px !important;
+    height: auto !important;
+    margin: 40px auto !important;
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  /* 3. Distinct Services Blocks Grid */
   .grid, [class*="grid-cols-"] {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important;
@@ -54,76 +83,90 @@
     margin-top: 30px !important;
   }
 
-  /* Styling individual service blocks */
   .grid > div, [class*="border-neutral-"] {
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(212, 175, 55, 0.15) !important;
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(212, 175, 55, 0.12) !important;
     padding: 30px !important;
     border-radius: 4px !important;
   }
 
-  /* 4. Fixes the Biography Layout: Photo Left, Text Right */
-  div:has(> img[src*="portrait.jpg"]), 
-  [class*="flex-col"]:has(img) {
+  /* 4. Separating the Portrait from the About Text (No Overlap) */
+  /* This targets the container holding your photo and bio to force them side-by-side cleanly */
+  section:has(img[src*="portrait"]), 
+  div:has(> img[src*="portrait"]),
+  [class*="md:flex-row"] {
     display: flex !important;
-    flex-direction: row !important; /* Forces side-by-side desktop view */
-    gap: 40px !important;
+    flex-direction: row !important;
+    gap: 48px !important;
     align-items: flex-start !important;
-    margin-top: 40px !important;
-  }
-
-  /* Tames your Portrait and adds the crisp Atoms Gold Frame */
-  img[src*="portrait.jpg"] {
-    width: 250px !important;
-    min-width: 250px !important;
-    height: 330px !important;
-    object-fit: cover !important;
-    border: 1px solid #d4af37 !important; /* Crispy gold line frame */
-    padding: 8px !important; /* Creates the spacing inside the gold frame */
-    background: #1e1e1e !important;
-    border-radius: 2px !important;
-  }
-
-  /* 5. Tames the Overlarge Geometrical Line Symbol Divider */
-  div:has(> svg), .absolute:has(svg), svg {
     position: relative !important;
-    max-width: 180px !important; /* Shrinks the giant alignment graphic down completely */
-    margin: 40px auto !important;
-    opacity: 0.5 !important;
-    display: block !important;
-    height: auto !important;
+    margin-top: 40px !important;
+    background: transparent !important;
+  }
+
+  /* Specific styling for your profile portrait frame */
+  img[src*="portrait"] {
+    width: 260px !important;
+    min-width: 260px !important;
+    height: 350px !important;
+    object-fit: cover !important;
+    border: 1px solid #d4af37 !important;
+    padding: 8px !important;
+    background: #1a1a1a !important;
+    border-radius: 0px !important;
+    position: relative !important;
     z-index: 5 !important;
   }
 
-  /* 6. Premium Typography Color Adjustments */
-  h1, h2, h3, [class*="font-serif"] {
-    font-family: 'Cormorant Garamond', serif !important;
-    color: #f7f4eb !important; /* True soft cream white */
-    font-weight: 400 !important;
-    margin-bottom: 16px !important;
+  /* Fixes the text wrapper next to the photo to prevent bleeding */
+  div:has(> img[src*="portrait"]) + div,
+  section:has(img[src*="portrait"]) div[class*="w-"] {
+    flex: 1 !important;
+    position: relative !important;
+    z-index: 5 !important;
+    background: transparent !important;
   }
 
-  p, span, li, [class*="text-zinc-"], [class*="text-neutral-"] {
-    color: #94a3b8 !important; /* Clean, highly readable slate grey */
+  /* 5. Precision Typography Overrides (Beating the Light Blue Color) */
+  /* Headers: Crisp, elegant off-white */
+  h1, h2, h3, h4, 
+  [class*="font-serif"],
+  div[id="root"] h2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    color: #fcfbfa !important; /* Pure elegant white/cream */
+    font-weight: 400 !important;
+    margin-bottom: 16px !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  /* Paragraphs & Core Text: Crisp light grey instead of light blue */
+  p, span, li, 
+  [class*="text-zinc-"], 
+  [class*="text-neutral-"], 
+  [class*="text-slate-"] {
+    color: #e2e8f0 !important; /* Clear, highly scannable off-white/grey text */
     font-size: 1.05rem !important;
     line-height: 1.75 !important;
   }
 
-  /* Fixed Text Gaps */
+  /* Spacing cleanup */
   p {
     margin-top: 0 !important;
     margin-bottom: 18px !important;
   }
 
-  /* Gold Highlight Text styles */
-  em, strong, [class*="text-gold"] {
-    color: #e5c158 !important;
+  /* Golden/Yellow Emphasis Text formatting */
+  em, strong, 
+  [class*="text-gold"], 
+  [class*="text-amber-"],
+  section h2 + p {
+    color: #e5c158 !important; /* Atoms gold signature */
     font-style: italic !important;
     font-family: 'Cormorant Garamond', serif !important;
   }
 
-  /* Neutralizing nested background framework classes */
-  .min-h-screen, main, section {
+  /* Neutralizing framework backgrounds that bleed through */
+  .min-h-screen, main, section, div[class*="bg-neutral-"] {
     background: transparent !important;
     padding: 0 !important;
     margin: 0 !important;
